@@ -13,12 +13,12 @@ public class ContaEspecial extends Conta {
 		this(numero, 0.0);
 	}
 
-	public void creditar(double valor) {
+	public void creditar(double valor) throws OperacaoComValoresNegativosException {
 		super.creditar(valor);
 		bonus = bonus + (valor * 0.01);
 	}
 
-	public void renderBonus() {
+	public void renderBonus() throws OperacaoComValoresNegativosException {
 		super.creditar(this.bonus);
 		bonus = 0;
 	}

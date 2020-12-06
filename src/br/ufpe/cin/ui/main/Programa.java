@@ -63,7 +63,7 @@ public class Programa {
 			System.out.println("789: " + banco.getSaldo("789"));
 			System.out.println("012: " + banco.getSaldo("012"));
 			
-			System.out.println("\nAgora a proxima linha gera um erro que será devidaente tratado");
+			System.out.println("\nAgora a proxima linha gera um erro que ser√° devidamente tratado");
 			banco.renderBonus("123");
 		} catch (ContaJaCadastradaException e) {
 			System.out.println(e.getMessage());

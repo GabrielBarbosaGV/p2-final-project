@@ -26,11 +26,12 @@ public abstract class ContaAbstrata {
 		return this.saldo;
 	}
 	
-	public void creditar(double valor) {
-		this.saldo = this.saldo + valor;
+	public void creditar(double valor) throws OperacaoComValoresNegativosException {
+		if (valor < 0) throw new OperacaoComValoresNegativosException();
+		else this.saldo = this.saldo + valor;
 	}
 	
-	public abstract void debitar(double valor) throws SaldoInsuficienteException;
+	public abstract void debitar(double valor) throws SaldoInsuficienteException, OperacaoComValoresNegativosException;
 
 	protected void setSaldo(double saldo) {
 		this.saldo = saldo;

@@ -80,7 +80,7 @@ public class FrameBanco extends JFrame {
 	}
 
 	private void erroNumero() {
-		erroNumero("Informe o número da conta desejada");
+		erroNumero("Informe o nÃºmero da conta desejada");
 	}
 	
 	private void erroNumero(String mensagem) {
@@ -110,7 +110,7 @@ public class FrameBanco extends JFrame {
 	private void initialize() {
 		this.setSize(382, 207);
 		this.setContentPane(getJContentPane());
-		this.setTitle("Aplicação Bancária");
+		this.setTitle("AplicaÃ§Ã£o BancÃ¡ria");
 	}
 
 	/**
@@ -420,7 +420,7 @@ public class FrameBanco extends JFrame {
 	private JTextField getTf_numero() {
 		if (tf_numero == null) {
 			tf_numero = new JTextField();
-			tf_numero.setToolTipText("Número da conta a ser operada (se transferencia, conta de origem)");
+			tf_numero.setToolTipText("NÃºmero da conta a ser operada (se transferencia, conta de origem)");
 			tf_numero.setBounds(new Rectangle(0
 					, 7, 103, 28));
 		}

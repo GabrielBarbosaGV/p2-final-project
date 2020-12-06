@@ -11,12 +11,15 @@ public class ContaImposto extends ContaAbstrata {
 		this(numero, 0.0);
 	}
 	
-	public void debitar(double valor) throws SaldoInsuficienteException {
-		if (this.getSaldo() < valor)
+	public void debitar(double valor) throws SaldoInsuficienteException, OperacaoComValoresNegativosException {
+		if (valor < 0) throw new OperacaoComValoresNegativosException();
+		else if (this.getSaldo() < valor)
 			throw new SaldoInsuficienteException(this.getNumero(), this.getSaldo());
-		double imposto = valor * CPMF;
-	    double total = valor + imposto;
-	    this.setSaldo(this.getSaldo() - total);
+		else {
+			double imposto = valor * CPMF;
+			double total = valor + imposto;
+			this.setSaldo(this.getSaldo() - total);
+		}
 	}
 
 }
