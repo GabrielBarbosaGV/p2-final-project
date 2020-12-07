@@ -17,7 +17,7 @@ public class RepositorioContasVector implements RepositorioContas {
     public ContaAbstrata procurar(String numero) throws ContaNaoEncontradaException {
         return contas
             .stream()
-            .filter(conta -> conta.getNumero() == numero)
+            .filter(conta -> conta.getNumero().equals(numero))
             .findFirst()
             .orElseThrow(() -> new ContaNaoEncontradaException());
     }
@@ -26,7 +26,7 @@ public class RepositorioContasVector implements RepositorioContas {
     public void remover(String numero) throws ContaNaoEncontradaException {
         Stream.iterate(0, n -> n + 1)
             .limit(contas.size())
-            .filter(n -> contas.get(n).getNumero() == numero)
+            .filter(n -> contas.get(n).getNumero().equals(numero))
             .findFirst()
             .map(n -> {
                 contas.remove(n);
