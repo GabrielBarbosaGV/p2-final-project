@@ -30,12 +30,12 @@ public class Banco {
 		}
 	}
 
-	public void creditar(String numero, double valor) throws ContaNaoEncontradaException{
+	public void creditar(String numero, double valor) throws ContaNaoEncontradaException, OperacaoComValoresNegativosException {
 		ContaAbstrata c = contas.procurar(numero);
 		c.creditar(valor);
 	}
 
-	public void debitar(String numero, double valor) throws ContaNaoEncontradaException, SaldoInsuficienteException {
+	public void debitar(String numero, double valor) throws ContaNaoEncontradaException, SaldoInsuficienteException, OperacaoComValoresNegativosException {
 		ContaAbstrata c = contas.procurar(numero);
 		c.debitar(valor);
 	}
@@ -45,14 +45,14 @@ public class Banco {
 		return c.getSaldo();
 	}
 
-	public void transferir(String de, String para, double valor) throws ContaNaoEncontradaException, SaldoInsuficienteException {
+	public void transferir(String de, String para, double valor) throws ContaNaoEncontradaException, SaldoInsuficienteException, OperacaoComValoresNegativosException {
 		ContaAbstrata origem = contas.procurar(de);
 		ContaAbstrata destino = contas.procurar(para);
 		origem.debitar(valor);
 		destino.creditar(valor);
 	}
 	
-	public void renderJuros(String numero) throws ContaNaoEncontradaException, RenderJurosPoupancaException{
+	public void renderJuros(String numero) throws ContaNaoEncontradaException, RenderJurosPoupancaException, OperacaoComValoresNegativosException {
 		ContaAbstrata c = contas.procurar(numero);
 		if (c instanceof Poupanca) {
 			((Poupanca) c).renderJuros(TAXA);
@@ -62,7 +62,7 @@ public class Banco {
 		}
 	}
 
-	public void renderBonus(String numero) throws ContaNaoEncontradaException, RenderBonusContaEspecialException{
+	public void renderBonus(String numero) throws ContaNaoEncontradaException, RenderBonusContaEspecialException, OperacaoComValoresNegativosException {
 		ContaAbstrata c = contas.procurar(numero);
 		if (c instanceof ContaEspecial) {
 			((ContaEspecial) c).renderBonus();
